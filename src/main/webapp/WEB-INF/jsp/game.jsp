@@ -46,28 +46,28 @@
 		
 	<table class="table table-bordered byngo">
 		<tr align="center">
-			<td valign="middle">Pasitempikim</td>
-			<td>Reikia pasistengti</td>
-			<td>Įgyvendinom planą</td>
-			<td>Ambicingi planai</td>
+			<td valign="middle">${phrases.next()}</td>
+			<td>${phrases.next()}</td>
+			<td>${phrases.next()}</td>
+			<td>${phrases.next()}</td>
 		</tr>
 		<tr align="center">
-			<td>Klientų pasitenkinimas</td>
-			<td>Dideli įkainiai</td>
-			<td>Nepaisant</td>
-			<td>Fiksuotos kainos projektai</td>
+			<td>${phrases.next()}</td>
+			<td>${phrases.next()}</td>
+			<td>${phrases.next()}</td>
+			<td>${phrases.next()}</td>
 		</tr>
 		<tr align="center">
-			<td>Daugiau negu prašo</td>
-			<td class="warning">Panaceja</td>
-			<td>Sausainis prie kavos</td>
-			<td>Kokybiškai</td>
+			<td>${phrases.next()}</td>
+			<td class="warning">${phrases.next()}</td>
+			<td>${phrases.next()}</td>
+			<td>${phrases.next()}</td>
 		</tr>
 		<tr align="center">
-			<td>Mobillios aplikacijos</td>
-			<td class="warning">Laiku</td>
-			<td>Naujas ofisas</td>
-			<td>Ne taip gerai kaip tikėjomės</td>
+			<td>${phrases.next()}</td>
+			<td class="warning">${phrases.next()}</td>
+			<td>${phrases.next()}</td>
+			<td>${phrases.next()}</td>
 		</tr>
 
 	</table>

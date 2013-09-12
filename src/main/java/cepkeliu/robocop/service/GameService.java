@@ -1,9 +1,14 @@
 package cepkeliu.robocop.service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -157,19 +162,39 @@ public class GameService extends BaseService {
         map.put(136, "Reikalavimas");
     }
     
+    public Iterator<String> randomPhrases() {
+        List<String> rnd = new ArrayList<String>();
+        Random r = new Random();
+        
+        for (int i = 0; i < 20; i++) {
+            rnd.add(map.get(r.nextInt(map.size())));
+        }
+        return rnd.iterator();
+    }
+
     public List<String> getPhraseTexts() {
         return new ArrayList<String>(map.values());
     }
 
+    private static BigDecimal calculateCost(final int persons, final Date startDate) {
+        long milis = new Date().getTime() - startDate.getTime();
+        
+        return new BigDecimal(milis).divide(new BigDecimal(3600000L), 10, RoundingMode.HALF_UP).multiply(new BigDecimal(persons))
+                .setScale(2, RoundingMode.HALF_UP);
+    }
+
     @Transactional(readOnly = true)
-    public List<String> getPlayers(final Long meetingId) {
+    public MeetingInfoDto getGameInfo(final Long meetingId) {
+        MeetingInfoDto info = new MeetingInfoDto();
+
         Meeting meeting = getById(meetingId, Meeting.class);
 
-        List<String> result = new ArrayList<String>();
         for (Player player : meeting.getPlayers()) {
-            result.add(player.getName());
+            info.getPlayers().add(player.getName());
         }
+        info.setWinner(null);
+        info.setCost(calculateCost(meeting.getPlayers().size(), meeting.getCreatedOn()));
 
-        return result;
+        return info;
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cepkeliu.robocop.model.Meeting;
 import cepkeliu.robocop.service.GameService;
+import cepkeliu.robocop.service.MeetingInfoDto;
 import cepkeliu.robocop.service.MeetingsService;
 
 @Controller
@@ -35,13 +36,14 @@ public class GameController {
         Meeting meeting = meetingsService.getById(id, Meeting.class);
         
         map.addAttribute("meeting", meeting);
+        map.addAttribute("phrases", gameService.randomPhrases());
 
         return "game";
     }
 
     @RequestMapping(value = "/game/{id}/info", produces = {MediaType.APPLICATION_JSON_VALUE })
     @ResponseBody
-    public List<String> players(@PathVariable("id") final Long id) {
-        return gameService.getPlayers(id);
+    public MeetingInfoDto gameInfo(@PathVariable("id") final Long id) {
+        return gameService.getGameInfo(id);
     }
 }
