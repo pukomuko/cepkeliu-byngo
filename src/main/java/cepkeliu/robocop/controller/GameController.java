@@ -38,4 +38,10 @@ public class GameController {
 
         return "game";
     }
+
+    @RequestMapping(value = "/game/{id}/info", produces = {MediaType.APPLICATION_JSON_VALUE })
+    @ResponseBody
+    public List<String> players(@PathVariable("id") final Long id) {
+        return gameService.getPlayers(id);
+    }
 }

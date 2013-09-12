@@ -31,9 +31,4 @@ public class SignUp {
     public void setMeetingName(final String meetingName) {
         this.meetingName = meetingName;
     }
-
-    @Override
-    public String toString() {
-        return "SignUp [meetingId=" + meetingId + ", playerName=" + playerName + ", meetingName=" + meetingName + "]";
-    }
 }

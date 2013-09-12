@@ -6,9 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import cepkeliu.robocop.model.Meeting;
+import cepkeliu.robocop.model.Player;
 
 @Service
-public class GameService {
+public class GameService extends BaseService {
 
     public static Map<Integer, String> map;
 
@@ -155,5 +159,17 @@ public class GameService {
     
     public List<String> getPhraseTexts() {
         return new ArrayList<String>(map.values());
+    }
+
+    @Transactional(readOnly = true)
+    public List<String> getPlayers(final Long meetingId) {
+        Meeting meeting = getById(meetingId, Meeting.class);
+
+        List<String> result = new ArrayList<String>();
+        for (Player player : meeting.getPlayers()) {
+            result.add(player.getName());
+        }
+
+        return result;
     }
 }
