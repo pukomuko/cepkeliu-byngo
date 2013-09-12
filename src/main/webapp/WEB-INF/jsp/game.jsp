@@ -43,6 +43,7 @@
 	<div class="container">
 
 	<h4>${meeting.name}</h4>
+	<div class="pull-right">Susitikimo kaina: <span id="price">0</span> Lt</div>
 		
 	<table id="card" class="table table-bordered byngo">
 		<tr align="center">
@@ -71,6 +72,10 @@
 		</tr>
 	</table>
 	
+	<h4>Dalyvauja</h4>
+	<ul id="players" class="list-group">
+		
+	</ul>
 	
 	</div>
 

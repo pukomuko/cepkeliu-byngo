@@ -54,7 +54,7 @@ public class GameController {
 
         if (info.getWinner() != null) {
             if (info.getWinner().equalsIgnoreCase(playerName)) {
-                info.setWonBeMe(true);
+                info.setWonByMe(true);
             }
         }
         return info;
