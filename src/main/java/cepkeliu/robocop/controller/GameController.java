@@ -5,10 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cepkeliu.robocop.model.Meeting;
 import cepkeliu.robocop.service.GameService;
+import cepkeliu.robocop.service.MeetingsService;
 
 @Controller
 public class GameController {
@@ -16,9 +20,22 @@ public class GameController {
     @Autowired
     private GameService gameService;
 
-    @RequestMapping(value = "/game/phrases", produces = { MediaType.APPLICATION_JSON_VALUE }, consumes = { MediaType.ALL_VALUE })
+    @Autowired
+    private MeetingsService meetingsService;
+
+    @RequestMapping(value = "/game/phrases", produces = { MediaType.APPLICATION_JSON_VALUE })
     @ResponseBody
     public List<String> phrases() {
         return gameService.getPhraseTexts();
+    }
+    
+    @RequestMapping(value = "/game/{id}")
+    public String game(@PathVariable("id") final Long id, final ModelMap map) {
+
+        Meeting meeting = meetingsService.getById(id, Meeting.class);
+        
+        map.addAttribute("meeting", meeting);
+
+        return "game";
     }
 }

@@ -50,10 +50,12 @@ public class PlayerSignupController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String start(@ModelAttribute("signUp") final SignUp signUp, final BindingResult result, final HttpServletResponse response) {
+    public String start(final ModelMap map, @ModelAttribute("signUp") final SignUp signUp, final BindingResult result,
+            final HttpServletResponse response) {
 
         if (empty(signUp.getPlayerName())) {
             result.rejectValue("playerName", "emptyPlayerName", "Įveskite žaidėjo vardą");
+            map.put("meetings", meetingsService.getAll());
             return "signup";
         }
         
@@ -62,6 +64,7 @@ public class PlayerSignupController {
         if ("new".equals(signUp.getMeetingId())) {
             if (empty(signUp.getMeetingName())) {
                 result.rejectValue("meetingName", "emptyMeetingName", "Įveskite meetingo pavadinimą!");
+                map.put("meetings", meetingsService.getAll());
                 return "signup";
             }
             
