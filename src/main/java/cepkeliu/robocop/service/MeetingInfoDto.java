@@ -12,7 +12,7 @@ public class MeetingInfoDto {
 
     private List<String> players;
     
-    private boolean wonBeMe;
+    private boolean wonByMe;
 
     public MeetingInfoDto() {
         this.players = new ArrayList<String>();
@@ -42,11 +42,11 @@ public class MeetingInfoDto {
         this.players = players;
     }
 
-    public boolean isWonBeMe() {
-        return wonBeMe;
+    public boolean isWonByMe() {
+        return wonByMe;
     }
 
-    public void setWonBeMe(boolean wonBeMe) {
-        this.wonBeMe = wonBeMe;
+    public void setWonByMe(boolean wonByMe) {
+        this.wonByMe = wonByMe;
     }
 }

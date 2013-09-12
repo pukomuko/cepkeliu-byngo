@@ -43,6 +43,7 @@
 	<div class="container">
 
 	<h4>${meeting.name}</h4>
+	<div class="pull-right">Susitikimo kaina: <span id="price">0</span> Lt</div>
 		
 	<table id="card" class="table table-bordered byngo">
 		<tr align="center">
@@ -71,8 +72,47 @@
 		</tr>
 	</table>
 	
+	<h4>Dalyvauja</h4>
+	<ul id="players" class="list-group">
+		
+	</ul>
 	
 	</div>
+	
+	
+	
+<div id="success" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Išgerk - tu laimėjai!</h4>
+      </div>
+      <div class="modal-body" align="center">
+        <p>
+        <img src="/img/cepkeliu-butelis.png">
+        </p>
+        <a href="/">Pradėti iš naujo</a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div id="fail" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Laimėjo <span id="winner"></span>!</h4>
+      </div>
+      <div class="modal-body"  align="center">
+        <p>
+        <img src="/img/sad-panda.jpg">
+        </p>
+        <a href="/">Pradėti iš naujo</a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

@@ -9,3 +9,8 @@ body {
 	width: 25%;
 	vertical-align: middle !important;
 }
+
+#price {
+	color: red;
+	font-weight: bold;
+}
