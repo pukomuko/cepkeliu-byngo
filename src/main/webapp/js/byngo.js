@@ -12,7 +12,6 @@
 
 			var celldata = {};
 			
-			
 			$("#card td").each(function(index, element){
 				if (undefined != $(element).attr('class')) {
 					celldata[$(element).attr('id')] = true;
@@ -24,11 +23,19 @@
 
 			console.log(celldata);
 			
-			url = '/game/'+ meetingId +'/update';
+			postUrl = '/game/'+ meetingId +'/update';
 			
-			console.log(url);
+			console.log(postUrl);
 			
-			$.post(url, celldata, function(){}, 'application/json');
+			$.ajax({
+		        url: postUrl,
+		        data: JSON.stringify(celldata),
+		        dataType: 'json',
+		        type: 'POST',
+		        contentType: 'application/json',
+		        traditional: false,
+		        success: function(data) { console.log(data); }
+		      });
 		}); 
 	 
 		

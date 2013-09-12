@@ -60,9 +60,13 @@ public class GameController {
         return info;
     }
     
-    @RequestMapping(value = "/game/{id}/update", consumes = { MediaType.APPLICATION_JSON_VALUE })
-    public Boolean update(@PathVariable("id") final Long id, @RequestBody final Map<String, Boolean> cellMap) {
+    @RequestMapping(value = "/game/{id}/update", consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.TEXT_PLAIN_VALUE })
+    @ResponseBody
+    public String update(@PathVariable("id") final Long id, @RequestBody final Object obj, @ModelAttribute("player") final String playerName) {
 
+        @SuppressWarnings("unchecked")
+        final Map<String, Boolean> cellMap = (Map<String, Boolean>) obj;
+        
         int[][] matrix = new int[4][4];
         for (Entry<String, Boolean> entry : cellMap.entrySet()) {
             int x = entry.getKey().replace("cell", "").charAt(0) - '0' - 1;
@@ -70,8 +74,11 @@ public class GameController {
             matrix[x][y] = entry.getValue() ? 1 : 0;
         }
 
-        Meeting meeting = meetingsService.getById(id, Meeting.class);
+        boolean solved = gameService.solveWinner(cellMap);
 
-        return true;
+        if (solved) {
+            gameService.closeMeeting(id, playerName);
+        }
+        return "Is solved: " + solved;
     }
 }
