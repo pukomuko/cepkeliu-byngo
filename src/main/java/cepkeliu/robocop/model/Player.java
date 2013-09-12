@@ -3,6 +3,7 @@ package cepkeliu.robocop.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Player {
@@ -13,10 +14,8 @@ public class Player {
 
     private String name;
 
-    @Override
-    public String toString() {
-        return "Player [id=" + id + ", name=" + name + "]";
-    }
+    @ManyToOne
+    private Meeting meeting;
 
     public Long getId() {
         return id;

@@ -1,7 +1,5 @@
 package cepkeliu.robocop.controller;
 
-import java.util.Date;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,8 +11,9 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.WebRequest;
 
-import cepkeliu.robocop.model.Meeting;
 import cepkeliu.robocop.service.MeetingsService;
 
 @Controller
@@ -51,7 +50,7 @@ public class PlayerSignupController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String start(final ModelMap map, @ModelAttribute("signUp") final SignUp signUp, final BindingResult result,
-            final HttpServletResponse response) {
+            final HttpServletResponse response, final WebRequest request) {
 
         if (empty(signUp.getPlayerName())) {
             result.rejectValue("playerName", "emptyPlayerName", "Įveskite žaidėjo vardą");
@@ -59,24 +58,22 @@ public class PlayerSignupController {
             return "signup";
         }
         
-        String meetingId = signUp.getMeetingId();
-        
+        Long meetingId;
         if ("new".equals(signUp.getMeetingId())) {
             if (empty(signUp.getMeetingName())) {
                 result.rejectValue("meetingName", "emptyMeetingName", "Įveskite meetingo pavadinimą!");
                 map.put("meetings", meetingsService.getAll());
                 return "signup";
             }
-            
-            Meeting meeting = new Meeting();    
-            meeting.setCreatedOn(new Date());
-            meeting.setName(signUp.getMeetingName().trim());
-            
-            meetingsService.save(meeting, Meeting.class);
-            meetingId = meeting.getId().toString();
+
+            meetingId = meetingsService.createNewMeeting(signUp.getMeetingName(), signUp.getPlayerName());
+        } else {
+            Long id = Long.parseLong(signUp.getMeetingId());
+            meetingId = meetingsService.attachPlayerToMeeting(id, signUp.getPlayerName());
         }
         
         response.addCookie(new Cookie("byngoPlayerName", signUp.getPlayerName()));
+        request.setAttribute("player", signUp.getPlayerName(), RequestAttributes.SCOPE_SESSION);
 
         return "redirect:game/" + meetingId;
     }
