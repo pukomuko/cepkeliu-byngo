@@ -47,10 +47,14 @@
 				  
 				  if (data.wonByMe) {
 					  // redirect to success
+					  console.log("laimejau!");
+					  return;
 				  }
 				  
 				  if (data.winner != null) {
 					  // redirect to fail
+					  console.log("pafeilinau");
+					  return;
 				  }
 				  
 				  // update price
