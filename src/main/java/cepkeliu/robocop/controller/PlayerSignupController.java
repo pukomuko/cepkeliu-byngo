@@ -1,5 +1,8 @@
 package cepkeliu.robocop.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
@@ -51,7 +54,7 @@ public class PlayerSignupController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String start(final ModelMap map, @ModelAttribute("signUp") final SignUp signUp, final BindingResult result,
-            final HttpServletResponse response, final WebRequest request, final SessionStatus sessionStatus) {
+            final HttpServletResponse response, final WebRequest request, final SessionStatus sessionStatus) throws UnsupportedEncodingException {
 
         if (empty(signUp.getPlayerName())) {
             result.rejectValue("playerName", "emptyPlayerName", "Įveskite žaidėjo vardą");
@@ -67,13 +70,15 @@ public class PlayerSignupController {
                 return "signup";
             }
 
-            meetingId = meetingsService.createNewMeeting(signUp.getMeetingName(), signUp.getPlayerName());
+            meetingId =
+                    meetingsService
+                            .createNewMeeting(signUp.getMeetingName(), signUp.getPlayerName());
         } else {
             Long id = Long.parseLong(signUp.getMeetingId());
             meetingId = meetingsService.attachPlayerToMeeting(id, signUp.getPlayerName());
         }
         
-        response.addCookie(new Cookie("byngoPlayerName", signUp.getPlayerName()));
+        response.addCookie(new Cookie("byngoPlayerName", URLEncoder.encode(signUp.getPlayerName(), "UTF-8")));
         sessionStatus.setComplete();
         request.setAttribute("player", signUp.getPlayerName(), RequestAttributes.SCOPE_SESSION);
 
