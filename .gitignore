@@ -6,5 +6,5 @@
 /.idea
 /*.iml
 /bin
-/src/main/resources/rebel-remote.xml
-/src/main/resources/rebel.xml
+rebel-remote.xml
+rebel.xml
