@@ -15,7 +15,9 @@ public class MeetingsService extends BaseService {
 
     @Transactional(readOnly = true)
     public List<Meeting> getAll() {
-        return em.createQuery("from Meeting order by createdOn desc", Meeting.class).getResultList();
+        return em.createQuery("from Meeting where winner is null order by createdOn desc", Meeting.class)
+                .setMaxResults(10)
+                .getResultList();
     }
     
     @Transactional 
