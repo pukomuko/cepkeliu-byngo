@@ -21,6 +21,11 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     
+    
+    <link rel="apple-touch-icon" href="img/cepkeliu-icon.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="img/cepkeliu-icon.png" />
+
+    
 </head>
 <body>
 
