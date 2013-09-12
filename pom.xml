@@ -107,8 +107,9 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>maven-jetty-plugin</artifactId>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>8.1.12.v20130726</version>
 				<configuration>
                     <contextPath>/</contextPath>                     
                 </configuration>
