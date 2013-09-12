@@ -38,7 +38,7 @@ public class PlayerSignupController {
     public String index(final ModelMap map, @ModelAttribute("signUp") final SignUp signUp,
             @CookieValue(value = "byngoPlayerName", required = false) final String cookiePlayerName) throws UnsupportedEncodingException {
 
-        if (signUp.getPlayerName() == null) {
+        if (signUp.getPlayerName() == null && cookiePlayerName != null) {
             signUp.setPlayerName(URLDecoder.decode(cookiePlayerName, "UTF-8"));
         }
         if (signUp.getMeetingId() == null) {
