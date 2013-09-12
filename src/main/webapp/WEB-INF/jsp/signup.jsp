@@ -7,29 +7,92 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Čepkeliu Robocop Byngo</title>
+    <title>Čepkelių Byngo</title>
 
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="/css/bootstrap.css" rel="stylesheet">
-    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/byngo.css" rel="stylesheet">
+    
+    <link rel="shortcut icon" href="img/favicon.png">
+    
 </head>
 <body>
 
-    ${signUp}
 
-    Meetings!!!
-    <form:form method="POST" commandName="signUp">
-        <form:input path="playerName"/>
-        <form:errors path="playerName"/>
-            <c:forEach var="meeting" items="${meetings}">
-                <form:radiobutton path="meetingId" title="${meeting.name}" value="${meeting.id}"></form:radiobutton>
+
+    <!-- Static navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Čepkelių Byngo</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container">
+	    <div class="panel panel-danger">
+	      <div class="panel-heading">
+	        <h3 class="panel-title">Registracija</h3>
+	      </div>
+	      <div class="panel-body">
+	     
+	      <form:form method="POST" commandName="signUp" role="form">
+	         
+	         	<form:errors path="playerName" cssClass="alert alert-danger" element="div"/>
+	         	
+				<div class="input-group input-group-lg">
+				  <span class="input-group-addon">@</span>
+				  <form:input path="playerName" cssClass="form-control input-lg" placeholder="Vardas"/>
+				</div>
+				
+				<br/>
+ 
+ 
+             <c:forEach var="meeting" items="${meetings}">
+				<div class="radio">
+				  <label>
+				    <form:radiobutton path="meetingId" title="${meeting.name}" value="${meeting.id}"/>
+				    ${meeting.name}
+				  </label>
+				</div>
             </c:forEach>
-            <form:radiobutton path="meetingId" value="new"/>
-            <form:input path="meetingName"/>
-            <form:errors path="meetingName"/>
-        <input type="submit" />
-    </form:form>
+ 
+			
+			<form:errors path="meetingName" cssClass="alert alert-danger" element="div"/>
+			
+			<div class="radio">
+			  <label>
+			    <form:radiobutton path="meetingId" value="new"/>
+			    <form:input path="meetingName" cssClass="form-control" placeholder="Naujas meetingas"/>
+			  </label>
+			 </div>
+
+			<input type="submit" class="btn btn-primary btn-lg pull-right" value="Pirmyn!"/>
+			
+						 
+        </form:form>
+	        
+	        
+	        </div> <!-- panel body -->
+	        
+	    </div>
+    </div>
+
+    
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
 </body>
 </html>
