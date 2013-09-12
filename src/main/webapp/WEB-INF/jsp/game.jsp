@@ -80,6 +80,9 @@
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 	<script src="/js/byngo.js"></script>
+	<script>
+		var meetingId = ${meeting.id};
+	</script>
 
 </body>
 </html>
