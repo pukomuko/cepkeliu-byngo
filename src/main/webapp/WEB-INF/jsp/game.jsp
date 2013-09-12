@@ -78,6 +78,37 @@
 	</ul>
 	
 	</div>
+	
+	
+	
+<div id="success" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Išgerk - tu laimėjai!</h4>
+      </div>
+      <div class="modal-body">
+        <p>Čepkelių butelis!</p>
+        <a href="/">Pradėti iš naujo</a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div id="fail" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Išgerk - laimėjo <span id="winner"></span>!</h4>
+      </div>
+      <div class="modal-body">
+        <p>Čepkelių butelis!</p>
+        <a href="/">Pradėti iš naujo</a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

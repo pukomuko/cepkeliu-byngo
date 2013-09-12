@@ -48,12 +48,15 @@
 				  if (data.wonByMe) {
 					  // redirect to success
 					  console.log("laimejau!");
+					  $('#success').modal('show');
 					  return;
 				  }
 				  
 				  if (data.winner != null) {
 					  // redirect to fail
 					  console.log("pafeilinau");
+					  $('#winner').text(data.winner);
+					  $('#fail').modal('show');
 					  return;
 				  }
 				  
