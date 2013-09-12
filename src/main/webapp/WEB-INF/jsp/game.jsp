@@ -35,7 +35,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">${meeting.name} - Čepkelių Byngo</a>
+          <p class="navbar-text">${meeting.name}</p>
+          <a class="navbar-brand" href="/">Čepkelių Byngo</a>
         </div>
       </div>
     </div>
