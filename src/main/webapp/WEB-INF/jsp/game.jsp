@@ -44,32 +44,31 @@
 
 	<h4>${meeting.name}</h4>
 		
-	<table class="table table-bordered byngo">
+	<table id="card" class="table table-bordered byngo">
 		<tr align="center">
-			<td valign="middle">${phrases.next()}</td>
-			<td>${phrases.next()}</td>
-			<td>${phrases.next()}</td>
-			<td>${phrases.next()}</td>
+			<td id="cell11">${phrases.next()}</td>
+			<td id="cell12">${phrases.next()}</td>
+			<td id="cell13">${phrases.next()}</td>
+			<td id="cell14">${phrases.next()}</td>
 		</tr>
 		<tr align="center">
-			<td>${phrases.next()}</td>
-			<td>${phrases.next()}</td>
-			<td>${phrases.next()}</td>
-			<td>${phrases.next()}</td>
+			<td id="cell21">${phrases.next()}</td>
+			<td id="cell22">${phrases.next()}</td>
+			<td id="cell23">${phrases.next()}</td>
+			<td id="cell24">${phrases.next()}</td>
 		</tr>
 		<tr align="center">
-			<td>${phrases.next()}</td>
-			<td class="warning">${phrases.next()}</td>
-			<td>${phrases.next()}</td>
-			<td>${phrases.next()}</td>
+			<td id="cell31">${phrases.next()}</td>
+			<td id="cell32">${phrases.next()}</td>
+			<td id="cell33">${phrases.next()}</td>
+			<td id="cell34">${phrases.next()}</td>
 		</tr>
 		<tr align="center">
-			<td>${phrases.next()}</td>
-			<td class="warning">${phrases.next()}</td>
-			<td>${phrases.next()}</td>
-			<td>${phrases.next()}</td>
+			<td id="cell41">${phrases.next()}</td>
+			<td id="cell42">${phrases.next()}</td>
+			<td id="cell43">${phrases.next()}</td>
+			<td id="cell44">${phrases.next()}</td>
 		</tr>
-
 	</table>
 	
 	
@@ -80,7 +79,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-
+	<script src="/js/byngo.js"></script>
 
 </body>
 </html>
