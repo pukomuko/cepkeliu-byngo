@@ -1,12 +1,13 @@
-<!doctype html>
+<%@ page contentType="text/html; charset=UTF-8" isELIgnored="false" pageEncoding="UTF-8" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Cepkeliu Robocop Byngo</title>
+    <title>Čepkeliu Robocop Byngo</title>
 
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,14 +17,19 @@
 </head>
 <body>
 
-    Meetings!!!
-    <form:form action="/start" method="POST">
-        <c:if test="${not empty meetings }">
-            <c:forEach var="meeting" items="${meetings}">
-                <form:option value="${meeting.id }">${meeting.name}</form:option>
-            </c:forEach>
-        </c:if>
-    </form:form>
+    ${signUp}
 
+    Meetings!!!
+    <form:form method="POST" commandName="signUp">
+        <form:input path="playerName"/>
+        <form:errors path="playerName"/>
+            <c:forEach var="meeting" items="${meetings}">
+                <form:radiobutton path="meetingId" title="${meeting.name}" value="${meeting.id}"></form:radiobutton>
+            </c:forEach>
+            <form:radiobutton path="meetingId" value="new"/>
+            <form:input path="meetingName"/>
+            <form:errors path="meetingName"/>
+        <input type="submit" />
+    </form:form>
 </body>
 </html>

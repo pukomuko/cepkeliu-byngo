@@ -14,5 +14,11 @@ public class BaseService {
     public <T> T getById(final Long id, final Class<T> type) {
         return em.find(type, id);
     }
+    
+    @Transactional
+    public <T> T save(final T entity, final Class<T> type) {
+        em.persist(entity);
+        return entity;
+    }
 
 }
