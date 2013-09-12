@@ -5,20 +5,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import cepkeliu.robocop.model.Player;
-import cepkeliu.robocop.service.PlayerService;
+import cepkeliu.robocop.service.MeetingsService;
 
 @Controller
 public class PlayerSignupController {
 
     @Autowired
-    private PlayerService playerService;
+    private MeetingsService meetingsService;
 
     @RequestMapping("/")
     public String index(final ModelMap map) {
-
-        map.put("player", playerService.getById(10L, Player.class));
-
-        return "player";
+        map.put("meetings", meetingsService.getAll());
+        return "signup";
     }
 }
