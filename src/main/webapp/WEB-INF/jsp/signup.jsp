@@ -17,6 +17,9 @@
     <link href="css/byngo.css" rel="stylesheet">
     
     <link rel="shortcut icon" href="img/favicon.png">
+
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     
 </head>
 <body>
