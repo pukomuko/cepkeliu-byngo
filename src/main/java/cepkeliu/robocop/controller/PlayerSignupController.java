@@ -79,7 +79,9 @@ public class PlayerSignupController {
             meetingId = meetingsService.attachPlayerToMeeting(id, signUp.getPlayerName());
         }
         
-        response.addCookie(new Cookie("byngoPlayerName", URLEncoder.encode(signUp.getPlayerName(), "UTF-8")));
+        Cookie userCookie = new Cookie("byngoPlayerName", URLEncoder.encode(signUp.getPlayerName(), "UTF-8"));
+        userCookie.setMaxAge(Integer.MAX_VALUE);
+        response.addCookie(userCookie);
         sessionStatus.setComplete();
         request.setAttribute("player", signUp.getPlayerName(), RequestAttributes.SCOPE_SESSION);
 

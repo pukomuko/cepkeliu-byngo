@@ -23,7 +23,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     
 </head>
-<body>
+<body class='use-fastclick'>
 
 
     <!-- Static navbar -->
@@ -120,6 +120,7 @@
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 	<script src="/js/byngo.js"></script>
+	<script src="/js/fastbutton.js"></script>
 	<script>
 		var meetingId = ${meeting.id};
 	</script>
