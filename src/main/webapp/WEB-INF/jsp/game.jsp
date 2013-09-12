@@ -35,17 +35,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <p class="navbar-text">${meeting.name}</p>
           <a class="navbar-brand" href="/">Čepkelių Byngo</a>
         </div>
       </div>
     </div>
 
 	<div class="container">
-	
+
+	<h4>${meeting.name}</h4>
+		
 	<table class="table table-bordered byngo">
 		<tr align="center">
-			<td>Pasitempikim</td>
+			<td valign="middle">Pasitempikim</td>
 			<td>Reikia pasistengti</td>
 			<td>Įgyvendinom planą</td>
 			<td>Ambicingi planai</td>

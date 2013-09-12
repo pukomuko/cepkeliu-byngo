@@ -4,5 +4,8 @@ body {
 }
 
 .byngo td {
-	font-size: medium;	
+	font-size: small;
+	height: 80px;
+	width: 25%;
+	vertical-align: middle !important;
 }
