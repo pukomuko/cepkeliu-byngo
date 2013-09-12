@@ -87,8 +87,10 @@
       <div class="modal-header">
         <h4 class="modal-title">Išgerk - tu laimėjai!</h4>
       </div>
-      <div class="modal-body">
-        <p>Čepkelių butelis!</p>
+      <div class="modal-body" align="center">
+        <p>
+        <img src="/img/cepkeliu-butelis.png">
+        </p>
         <a href="/">Pradėti iš naujo</a>
       </div>
     </div><!-- /.modal-content -->
@@ -100,10 +102,12 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Išgerk - laimėjo <span id="winner"></span>!</h4>
+        <h4 class="modal-title">Laimėjo <span id="winner"></span>!</h4>
       </div>
-      <div class="modal-body">
-        <p>Čepkelių butelis!</p>
+      <div class="modal-body"  align="center">
+        <p>
+        <img src="/img/sad-panda.jpg">
+        </p>
         <a href="/">Pradėti iš naujo</a>
       </div>
     </div><!-- /.modal-content -->
