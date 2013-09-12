@@ -11,6 +11,8 @@ public class MeetingInfoDto {
     private BigDecimal cost;
 
     private List<String> players;
+    
+    private boolean wonBeMe;
 
     public MeetingInfoDto() {
         this.players = new ArrayList<String>();
@@ -38,5 +40,13 @@ public class MeetingInfoDto {
 
     public void setPlayers(final List<String> players) {
         this.players = players;
+    }
+
+    public boolean isWonBeMe() {
+        return wonBeMe;
+    }
+
+    public void setWonBeMe(boolean wonBeMe) {
+        this.wonBeMe = wonBeMe;
     }
 }

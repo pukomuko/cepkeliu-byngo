@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 
 import org.springframework.stereotype.Service;
@@ -198,7 +199,64 @@ public class GameService extends BaseService {
         info.setWinner(null);
         info.setCost(calculateCost(meeting.getPlayers().size(), meeting.getCreatedOn()));
         info.setWinner(meeting.getWinner());
+        info.setWonBeMe(false);
 
         return info;
+    }
+    
+    public static boolean solveMatrix(final int[][] matrix) {
+        int diag1 = 0;
+        int diag2 = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            int rowSum = 0;
+            int colSum = 0;
+
+            diag1 = diag1 + matrix[i][i];
+            diag2 = diag2 + matrix[i][matrix.length - i - 1];
+            for (int j = 0; j < matrix.length; j++) {
+                rowSum = rowSum + matrix[i][j];
+                colSum = colSum + matrix[j][i];
+            }
+            if (rowSum == matrix.length || colSum == matrix.length) {
+                return true;
+            }
+        }
+        return (diag1 == matrix.length) || (diag2 == matrix.length);
+    }
+
+    public boolean solveWinner(final Map<String, Boolean> cellMap) {
+        int[][] matrix = new int[4][4];
+        for (Entry<String, Boolean> entry : cellMap.entrySet()) {
+            int x = entry.getKey().replace("cell", "").charAt(0) - '0' - 1;
+            int y = entry.getKey().replace("cell", "").charAt(1) - '0' - 1;
+            matrix[x][y] = entry.getValue() ? 1 : 0;
+        }
+        return solveMatrix(matrix);
+    }
+
+    public static void main(final String[] args) {
+        int[][] matrix = new int[4][4];
+        matrix[0][0] = 0;
+        matrix[1][0] = 1;
+        matrix[2][0] = 1;
+        matrix[3][0] = 0;
+
+        matrix[0][1] = 1;
+        matrix[1][1] = 0;
+        matrix[2][1] = 0;
+        matrix[3][1] = 1;
+
+        matrix[0][2] = 1;
+        matrix[1][2] = 0;
+        matrix[2][2] = 0;
+        matrix[3][2] = 1;
+
+        matrix[0][3] = 0;
+        matrix[1][3] = 1;
+        matrix[2][3] = 1;
+        matrix[3][3] = 0;
+
+
+        System.out.println(solveMatrix(matrix));
     }
 }
