@@ -1,6 +1,7 @@
 package cepkeliu.robocop.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 import javax.servlet.http.Cookie;
@@ -35,10 +36,10 @@ public class PlayerSignupController {
 
     @RequestMapping("/")
     public String index(final ModelMap map, @ModelAttribute("signUp") final SignUp signUp,
-            @CookieValue(value = "byngoPlayerName", required = false) final String cookiePlayerName) {
+            @CookieValue(value = "byngoPlayerName", required = false) final String cookiePlayerName) throws UnsupportedEncodingException {
 
         if (signUp.getPlayerName() == null) {
-            signUp.setPlayerName(cookiePlayerName);
+            signUp.setPlayerName(URLDecoder.decode(cookiePlayerName, "UTF-8"));
         }
         if (signUp.getMeetingId() == null) {
             signUp.setMeetingId("new");

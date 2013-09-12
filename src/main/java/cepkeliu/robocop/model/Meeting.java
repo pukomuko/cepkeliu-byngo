@@ -64,7 +64,7 @@ public class Meeting {
         return winner;
     }
 
-    public void setWinner(String winner) {
+    public void setWinner(final String winner) {
         this.winner = winner;
     }
 }
