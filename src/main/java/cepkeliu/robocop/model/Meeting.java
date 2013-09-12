@@ -24,7 +24,9 @@ public class Meeting {
     @OneToMany(cascade = { CascadeType.ALL })
     private List<Player> players;
 
-    public String name;
+    private String name;
+
+    private String winner;
 
     public Long getId() {
         return id;
@@ -54,7 +56,15 @@ public class Meeting {
         return players;
     }
 
-    public void setPlayers(List<Player> players) {
+    public void setPlayers(final List<Player> players) {
         this.players = players;
+    }
+
+    public String getWinner() {
+        return winner;
+    }
+
+    public void setWinner(String winner) {
+        this.winner = winner;
     }
 }

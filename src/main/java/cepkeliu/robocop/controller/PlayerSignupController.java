@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.WebRequest;
 
@@ -50,7 +51,7 @@ public class PlayerSignupController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String start(final ModelMap map, @ModelAttribute("signUp") final SignUp signUp, final BindingResult result,
-            final HttpServletResponse response, final WebRequest request) {
+            final HttpServletResponse response, final WebRequest request, final SessionStatus sessionStatus) {
 
         if (empty(signUp.getPlayerName())) {
             result.rejectValue("playerName", "emptyPlayerName", "Įveskite žaidėjo vardą");
@@ -73,6 +74,7 @@ public class PlayerSignupController {
         }
         
         response.addCookie(new Cookie("byngoPlayerName", signUp.getPlayerName()));
+        sessionStatus.setComplete();
         request.setAttribute("player", signUp.getPlayerName(), RequestAttributes.SCOPE_SESSION);
 
         return "redirect:game/" + meetingId;
