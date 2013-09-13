@@ -36,11 +36,11 @@
       <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand" href="#" >Čepkelių Byngo</a>
-        </div>
+        
       		<button type="button" class="btn btn-default btn-inverse navbar-btn navbar-left " onClick="window.location.reload();">
 			  <span class="glyphicon glyphicon-refresh"></span>
 			</button>
-        
+        </div>
       </div>
     </div>
     
