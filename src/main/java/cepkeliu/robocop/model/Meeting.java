@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,6 +23,7 @@ public class Meeting {
     private Date createdOn;
     
     @OneToMany(cascade = { CascadeType.ALL })
+    @JoinColumn(name = "meeting_id")
     private List<Player> players;
 
     private String name;

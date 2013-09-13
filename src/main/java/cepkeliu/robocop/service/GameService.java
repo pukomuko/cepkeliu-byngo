@@ -228,7 +228,6 @@ public class GameService extends BaseService {
         for (Player player : meeting.getPlayers()) {
             info.getPlayers().add(player.getName());
         }
-        info.setWinner(null);
         info.setCost(calculateCost(meeting.getPlayers().size(), meeting.getCreatedOn()));
         info.setWinner(meeting.getWinner());
         info.setWonByMe(false);
