@@ -6,7 +6,7 @@
 		});  
 
 		$("#card td").click(function(event){
-			$(this).addClass("warning");
+			$(this).addClass("danger");
 			
 			// get all td and construct json request
 
