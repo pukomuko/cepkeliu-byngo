@@ -1,6 +1,10 @@
-# Spring MVC and Hibernate template application 
+# Cepkeliu bingo 
 
-This is a template for a web application that uses Spring MVC and Hibernate. The sample code is a simple CRUD page that manipulates records for a single model object.
+Go to <http://cepkeliu-byngo.herokuapp.com> for example deployment.
+
+It is built using heroku template for a web application that uses Spring MVC and Hibernate. 
+
+Use of Čepkelių brand is infringement.
 
 ## Running the application locally
 
